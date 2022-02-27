@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // userInput = prompt('Pick').toLowerCase()
+
+    function computer() {
+      let pick = ['rock', 'paper', 'scissors'];
+      let random = Math.floor(Math.random() * 3);
+      return pick[random];
+    }
+
+
+    function playRound() {
+      userInput = prompt('Pick').toLowerCase()
+      let pc = computer();
+      if (userInput === 'rock' && pc === 'rock') return 'tie';
+      if (userInput === 'rock' && pc === 'paper') return 'loser';
+      if (userInput === 'rock' && pc === 'scissors') return 'winner';
+      if (userInput === 'paper' && pc === 'paper') return 'tie';
+      if (userInput === 'paper' && pc === 'scissors') return 'loser';
+      if (userInput === 'paper' && pc === 'rock') return 'winner';
+      if (userInput === 'scissors' && pc === 'scissors') return 'tie';
+      if (userInput === 'scissors' && pc === 'paper') return 'winner';
+      if (userInput === 'scissors' && pc === 'rock') return 'loser';
+    }
+
+    function game() {
+      let player = 0;
+      let computer = 0;
+      for (let i = 0; i < 5; i++) {
+        let score = playRound();
+        console.log(score)
+        if (score === 'winner') player++;
+        if (score === 'loser') computer++;
+        if (score === 'tie') {
+          computer++;
+          player++;
+        };
+      }
+      if (player > computer) console.log('player wins')
+      if (player < computer) console.log('pc wins')
+      if (player === computer) console.log('tie!!')
+      console.log(player, computer)
+    }
+    game();
+  </script>
+</body>
+
+</html>
